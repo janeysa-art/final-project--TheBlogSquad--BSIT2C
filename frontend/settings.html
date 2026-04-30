@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogSquad - Settings</title>
+    <link rel="stylesheet" href="settings.css">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<!-- Header Section -->
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            <i data-lucide="compass"></i>
+            <h1>BLOGSQUAD</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Blog</a>
+            <a href="index.html">Home</a>
+            <a href="#">Travel Tips</a>
+            <a href="#">Contact</a>
+            <a href="#" class="active">Settings</a>
+        </nav>
+    </div>
+</header>
+<body>
+  
+    <main class="settings-container">
+        <header class="settings-header">
+            <h1>Settings</h1>
+            <p>Manage your account preferences and configuration.</p>
+        </header>
+
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="profile">
+                <i data-lucide="user"></i> Profile
+            </button>
+            <button class="tab-btn" data-tab="notifications">
+                <i data-lucide="bell"></i> Notifications
+            </button>
+            <button class="tab-btn" data-tab="appearance">
+                <i data-lucide="palette"></i> Appearance
+            </button>
+            <button class="tab-btn" data-tab="privacy">
+                <i data-lucide="shield"></i> Privacy
+            </button>
+            <button class="tab-btn" data-tab="account">
+                <i data-lucide="globe"></i> Account
+            </button>
+        </div>
+
+        <div class="card">
+            <!-- Profile Tab -->
+            <section id="profile" class="tab-content active">
+                <div class="section-title">
+                    <h2>Profile Information</h2>
+                    <p>Update your personal details and public profile.</p>
+                </div>
+               <div class="avatar-section">
+    <!-- Clicking this image will also trigger the file manager -->
+    <img src="https://i.pravatar.cc/100?img=32" alt="Avatar" class="avatar" id="profile-img" style="cursor: pointer;">
+    
+    <div class="avatar-info">
+        <button class="link-btn" id="change-avatar-btn">Change Avatar</button>
+        <span>JPG, PNG. Max 2MB.</span>
+        
+        <!-- The actual (hidden) input that opens the file manager -->
+        <input type="file" id="file-input" accept="image/*" style="display: none;">
+    </div>
+</div>
+                </div>
+                <div class="grid-form">
+                    <div class="input-group">
+                        <label>Display Name</label>
+                        <input type="text" value="BlogSquad Traveler">
+                    </div>
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" value="traveler@blogsquad.com">
+                    </div>
+                    <div class="input-group">
+                        <label>Location</label>
+                        <input type="text" value="Bali, Indonesia">
+                    </div>
+                    <div class="input-group">
+                        <label>Website</label>
+                        <input type="text" value="blogsquad.travel">
+                    </div>
+                </div>
+                <div class="input-group full-width">
+                    <label>Bio</label>
+                    <textarea id="bio-text" maxlength="200">Wanderlust soul. Beach lover. Food explorer.</textarea>
+                    <span class="char-count"><span id="current-chars">44</span>/200 characters</span>
+                </div>
+            </section>
+
+            <!-- Notifications Tab -->
+            <section id="notifications" class="tab-content">
+                <div class="section-title">
+                    <h2>Notification Preferences</h2>
+                    <p>Choose how and when you want to be notified.</p>
+                </div>
+                <div class="settings-list">
+                    <h3>CHANNELS</h3>
+                    <div class="setting-item">
+                        <div class="item-text">
+                            <p class="label">Email Notifications</p>
+                            <p class="sub">Receive updates via email</p>
+                        </div>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="item-text">
+                            <p class="label">Push Notifications</p>
+                            <p class="sub">Browser push alerts for activity</p>
+                        </div>
+                        <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="item-text">
+                            <p class="label">New Posts</p>
+                            <p class="sub">When someone you follow publishes</p>
+                        </div>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appearance Tab -->
+            <section id="appearance" class="tab-content">
+                <div class="section-title">
+                    <h2>Appearance</h2>
+                    <p>Customize how BlogSquad looks for you.</p>
+                </div>
+                <div class="theme-grid">
+                    <div class="theme-option active">
+                        <i data-lucide="moon"></i>
+                        <p>Dark</p>
+                    </div>
+                    <div class="theme-option">
+                        <i data-lucide="sun"></i>
+                        <p>Light</p>
+                    </div>
+                    <div class="theme-option">
+                        <i data-lucide="monitor"></i>
+                        <p>System</p>
+                    </div>
+                </div>
+                <div class="slider-group">
+                    <label>FONT SIZE — <span id="font-val">16PX</span></label>
+                    <input type="range" min="12" max="24" value="16" class="range-slider">
+                    <div class="slider-labels"><span>Small</span><span>Large</span></div>
+                </div>
+               
+</div>
+            </section>
+
+            <!-- Privacy Tab -->
+            <section id="privacy" class="tab-content">
+                <div class="section-title">
+                    <h2>Privacy & Security</h2>
+                    <p>Control who can see your information.</p>
+                </div>
+                <div class="settings-list">
+                    <div class="setting-item">
+                        <div class="item-text">
+                            <p class="label">Public Profile</p>
+                            <p class="sub">Allow anyone to view your profile</p>
+                        </div>
+                        <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+                    </div>
+                    <div class="two-fa-box">
+                        <i data-lucide="shield"></i>
+                        <div class="box-content">
+                            <p class="label">Two-Factor Authentication</p>
+                            <p class="sub">Add an extra layer of security to your account.</p>
+                            <button class="link-btn">Enable 2FA</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Tab -->
+            <section id="account" class="tab-content">
+                <div class="section-title">
+                    <h2>Account Settings</h2>
+                    <p>Manage your account security and data.</p>
+                </div>
+                <div class="password-grid">
+                    <div class="input-group full-width relative">
+                        <label>Current Password</label>
+                        <input type="password" placeholder="Enter current password">
+                        <i data-lucide="eye" class="eye-icon"></i>
+                    </div>
+                    <div class="input-group">
+                        <label>New Password</label>
+                        <input type="password" placeholder="Enter new password">
+                    </div>
+                    <div class="input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" placeholder="Confirm new password">
+                    </div>
+                </div>
+                <hr>
+                <div class="danger-zone">
+                    <h3>DANGER ZONE</h3>
+                    <div class="setting-item">
+                        <div class="item-text">
+                            <p class="label">Sign Out</p>
+                            <p class="sub">Sign out of your account on this device</p>
+                        </div>
+                        <button class="btn-outline" id="logout-btn"><i data-lucide="log-out"></i> Sign Out</button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="item-text">
+                            <p class="label" style="color: #ff6b6b;">Delete Account</p>
+                            <p class="sub">Permanently delete your account and all data</p>
+                        </div>
+                       <button class="btn-outline-red" id="delete-btn"><i data-lucide="trash"></i> Delete</button>
+                    </div>
+                </div>
+            </section>
+
+             <footer class="card-footer">
+                <span class="auto-save" id="save-status">Changes are saved automatically</span>
+             <button class="save-btn" id="main-save-btn">
+        <i data-lucide="save"></i> Save Changes
+         </button>
+            </footer>
+        </div>
+    </main>
+
+    <script src="settings.js"></script>
+    <script>lucide.createIcons();</script>
+
+    <!-- Footer Section -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <i data-lucide="compass"></i>
+            <span>BLOGSQUAD</span>
+        </div>
+        <div class="footer-info">
+            <p>&copy; 2026 BlogSquad &middot; Travel Blog</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

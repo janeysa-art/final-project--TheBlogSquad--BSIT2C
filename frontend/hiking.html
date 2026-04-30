@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlogSquad | Hiking Trails in Asia</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#071b16;
+    color:white;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(90deg,#1d6b43,#2d9c63);
+    padding:18px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    padding:8px 14px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    background:rgba(255,255,255,0.15);
+}
+
+/* CONTAINER */
+.container{
+    width:85%;
+    margin:auto;
+    padding:50px 0;
+}
+
+/* FEATURED */
+.featured{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:30px;
+    margin-bottom:60px;
+    align-items:center;
+}
+
+.featured-image{
+    overflow:hidden;
+    border-radius:25px;
+}
+
+.featured-image img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.featured-image:hover img{
+    transform:scale(1.05);
+}
+
+.tag{
+    background:#1e6a44;
+    padding:8px 16px;
+    border-radius:10px;
+    display:inline-block;
+    margin-bottom:15px;
+    font-size:13px;
+}
+
+.featured h1{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.featured p{
+    color:#bfd6ca;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.btn{
+    background:#2d9c63;
+    color:white;
+    padding:12px 22px;
+    border-radius:12px;
+    text-decoration:none;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#35b56f;
+    transform:translateY(-4px);
+}
+
+/* BLOG GRID */
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card-link{
+    text-decoration:none;
+    color:white;
+}
+
+.card{
+    background:#10281f;
+    padding:15px;
+    border-radius:20px;
+    transition:.35s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 20px rgba(45,156,99,.3);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:18px;
+    transition:.4s;
+}
+
+.card:hover img{
+    transform:scale(1.05);
+}
+
+.card h3{
+    margin:15px 0 10px;
+}
+
+.card p{
+    color:#bfd6ca;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+    color:#9fb8ab;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .featured{
+        grid-template-columns:1fr;
+    }
+
+    .blog-grid{
+        grid-template-columns:1fr;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">BLOGSQUAD</div>
+    <ul>
+       <li><a href="index.html">Home</a></li>
+        <li><a href="#">Trails</a></li>
+        <li><a href="#">Tips</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- FEATURED -->
+    <section class="featured">
+        <div class="featured-image">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b">
+        </div>
+
+        <div>
+            <span class="tag">Featured Trail</span>
+            <h1>Best Hiking Trails in Asia</h1>
+            <p>
+                Asia offers world-class hiking adventures from the Himalayas
+                to tropical volcanoes. Explore famous trails loved by hikers worldwide.
+            </p>
+            <a href="featured.html" class="btn" target="_blank">Explore Trail</a>
+        </div>
+    </section>
+
+    <!-- CARDS -->
+    <section class="blog-grid">
+
+        <a href="everest.html" class="card-link" target="_blank">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7">
+                <span class="tag">Nepal</span>
+                <h3>Everest Base Camp</h3>
+                <p>Legendary Himalayan trek with glaciers, villages, and epic views.</p>
+            </div>
+        </a>
+
+        <a href="pulag.html" class="card-link" target="_blank">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b">
+                <span class="tag">Philippines</span>
+                <h3>Mount Pulag</h3>
+                <p>Known for its sea of clouds, sunrise summit, and mossy forests.</p>
+            </div>
+        </a>
+
+        <a href="fuji.html" class="card-link" target="_blank">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e">
+                <span class="tag">Japan</span>
+                <h3>Mount Fuji</h3>
+                <p>Japan’s most iconic climb with scenic trails and cultural beauty.</p>
+            </div>
+        </a>
+
+        <a href="rinjani.html" class="card-link" target="_blank">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206">
+                <span class="tag">Indonesia</span>
+                <h3>Mount Rinjani</h3>
+                <p>Volcanic summit hike with crater lake views and hot springs.</p>
+            </div>
+        </a>
+
+        <a href="annapurna.html" class="card-link" target="_blank">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606">
+                <span class="tag">Nepal</span>
+                <h3>Annapurna Circuit</h3>
+                <p>One of the greatest long-distance hiking routes in the world.</p>
+            </div>
+        </a>
+
+        <a href="kinabalu.html" class="card-link" target="_blank">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e">
+                <span class="tag">Malaysia</span>
+                <h3>Mount Kinabalu</h3>
+                <p>UNESCO-protected mountain trail with amazing biodiversity.</p>
+            </div>
+        </a>
+
+    </section>
+</div>
+
+<footer>
+    © 2026 BlogSquad | Hiking Trails in Asia
+</footer>
+
+</body>
+</html>
