@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Combined Profile UI</title>
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+  <link rel="stylesheet" href="profile.css" />
+  <script src="profile.js" defer></script>
+
+  <style>
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .tab.active {
+      font-weight: bold;
+      border-bottom: 2px solid black;
+    }
+
+    #galleryBox img {
+      width: 100px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="header__wrapper">
+  <header></header>
+
+  <div class="cols__container">
+
+    <!-- LEFT -->
+    <div class="left__col">
+      <div class="img__container">
+        <img src="usl.jpg" alt="Anna Smith" />
+      </div>
+
+      <h2>Anna Smith</h2>
+      <p>UX/UI Designer</p>
+      <p>anna@example.com</p>
+
+      <div class="buttons">
+        <button class="button" id="subscribeBtn">Subscribe</button>
+        <button class="button" id="messageBtn">Message</button>
+      </div>
+
+      <ul class="about">
+        <li><span id="followersCount">4073</span> Followers</li>
+        <li><span id="followingCount">322</span> Following</li>
+        <li><span id="attractionCount">200543</span> Attraction</li>
+      </ul>
+
+      <div class="content">
+        <p>
+          Pain itself is important, and it comes from the process of creating or developing something. Que Sera, Sera
+        </p>
+
+        <ul>
+          <li><i class="fab fa-twitter"></i></li>
+          <li><i class="fab fa-pinterest"></i></li>
+          <li><i class="fab fa-facebook"></i></li>
+          <li><i class="fab fa-dribbble"></i></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right__col">
+
+      <nav>
+        <ul>
+          <li><a href="#" class="tab active" data-tab="photos">photos</a></li>
+          <li><a href="#" class="tab" data-tab="galleries">galleries</a></li>
+          <li><a href="#" class="tab" data-tab="groups">groups</a></li>
+          <li><a href="#" class="tab" data-tab="about">about</a></li>
+        </ul>
+        <button id="followBtn">Follow</button>
+      </nav>
+
+      <!-- PHOTOS -->
+      <div class="tab-content active" id="photos">
+        <div class="photos">
+          <img src="ey1.png">
+          <img src="ey2.png">
+          <img src="eyy 3.png">
+          <img src="eyy4.jpg">
+          <img src="eyy5.jpg">
+          <img src="eyy6.jpg">
+        </div>
+      </div>
+
+      <!-- GALLERIES -->
+      <div class="tab-content" id="galleries">
+        <h3>Galleries</h3>
+        <button onclick="addGallery()">+ Add Image</button>
+        <div id="galleryBox"></div>
+      </div>
+
+      <!-- GROUPS -->
+      <div class="tab-content" id="groups">
+        <h3>Groups</h3>
+        <button onclick="addGroup()">+ Add Group</button>
+        <ul id="groupBox"></ul>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="tab-content" id="about">
+        <h3>About</h3>
+        <button onclick="addAbout()">+ Add Info</button>
+        <p id="aboutBox"></p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+const followBtn = document.getElementById("followBtn");
+const subBtn = document.getElementById("subscribeBtn");
+const msgBtn = document.getElementById("messageBtn");
+
+const followers = document.getElementById("followersCount");
+const following = document.getElementById("followingCount");
+const attraction = document.getElementById("attractionCount");
+
+const tabs = document.querySelectorAll(".tab");
+const contents = document.querySelectorAll(".tab-content");
+
+let isFollowing = false;
+
+/* ================= FOLLOW ================= */
+followBtn.onclick = () => {
+  let f1 = parseInt(followers.innerText);
+  let f2 = parseInt(following.innerText);
+  let f3 = parseInt(attraction.innerText);
+
+  if (!isFollowing) {
+    followers.innerText = f1 + 1;
+    following.innerText = f2 + 1;
+    attraction.innerText = f3 + 10;
+
+    followBtn.innerText = "Following";
+    followBtn.style.background = "green";
+
+    isFollowing = true;
+  } else {
+    followers.innerText = Math.max(0, f1 - 1);
+    following.innerText = Math.max(0, f2 - 1);
+    attraction.innerText = Math.max(0, f3 - 10);
+
+    followBtn.innerText = "Follow";
+    followBtn.style.background = "";
+
+    isFollowing = false;
+  }
+};
+
+/* ================= SUBSCRIBE ================= */
+subBtn.onclick = () => {
+  subBtn.innerText =
+    subBtn.innerText === "Subscribe" ? "Subscribed" : "Subscribe";
+};
+
+/* ================= MESSAGE ================= */
+msgBtn.onclick = () => {
+  const msg = prompt("Enter message:");
+  if (msg) alert("Sent: " + msg);
+};
+
+/* ================= TABS ================= */
+tabs.forEach(tab => {
+  tab.onclick = (e) => {
+    e.preventDefault();
+
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
+
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  };
+});
+
+/* ================= GALLERY ================= */
+function addGallery() {
+  const url = prompt("Enter image URL:");
+  if (!url) return;
+
+  const img = document.createElement("img");
+  img.src = url;
+  img.style.width = "100px";
+  img.style.margin = "5px";
+
+  document.getElementById("galleryBox").appendChild(img);
+}
+
+/* ================= GROUP ================= */
+function addGroup() {
+  const name = prompt("Enter group name:");
+  if (!name) return;
+
+  const li = document.createElement("li");
+  li.textContent = name;
+
+  document.getElementById("groupBox").appendChild(li);
+}
+
+/* ================= ABOUT ================= */
+function addAbout() {
+  const info = prompt("Enter about info:");
+  if (!info) return;
+
+  const box = document.getElementById("aboutBox");
+  box.textContent += (box.textContent ? " | " : "") + info;
+}
+</script>
+
+</body>
+</html>
