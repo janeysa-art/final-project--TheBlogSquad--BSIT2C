@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.2"
+  },
+  "name": "travelbloggingplatform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janeysa-art/final-project--TheBlogSquad--BSIT2C.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/janeysa-art/final-project--TheBlogSquad--BSIT2C/issues"
+  },
+  "homepage": "https://github.com/janeysa-art/final-project--TheBlogSquad--BSIT2C#readme"
+}
