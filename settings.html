@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogSquad - Settings</title>
+    <style>
+        :root {
+            --primary-purple: #6366f1;
+            --bg-page: #ffffff;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-gray: #94a3b8;
+            --input-bg: #f8fafc;
+            --input-border: #e2e8f0;
+            --input-text: #1e293b;
+        }
+
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --bg-page: #050512;
+            --bg-card: #0b0b22;
+            --text-main: #f1f5f9;
+            --input-bg: #11112a;
+            --input-border: #1e1e3f;
+            --input-text: #ffffff;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background-color: var(--bg-page); 
+            color: var(--text-main); 
+            transition: background 0.3s ease;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #4f46e5, #9333ea);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-size: 14px; opacity: 0.9; }
+
+        .content { padding: 40px 8%; max-width: 1000px; margin: auto; }
+        h1 { font-size: 32px; margin-bottom: 5px; }
+        .subtitle { color: var(--text-gray); margin-bottom: 30px; }
+
+        .tab-menu { display: flex; gap: 10px; border-bottom: 1px solid var(--input-border); margin-bottom: 30px; overflow-x: auto; }
+        .tab-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            border-radius: 8px 8px 0 0;
+            color: var(--text-gray);
+        }
+        .tab-item.active { background: var(--primary-purple); color: white; }
+
+        .settings-card {
+            background: var(--bg-card);
+            border: 1px solid var(--input-border);
+            border-radius: 12px;
+            padding: 30px;
+            display: none;
+        }
+        .settings-card.active { display: block; }
+
+        .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .avatar { width: 80px; height: 80px; border-radius: 12px; border: 2px solid var(--primary-purple); object-fit: cover; cursor: pointer; }
+        
+        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .input-box { margin-bottom: 20px; }
+        label { display: block; font-size: 13px; color: var(--text-gray); margin-bottom: 8px; }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 6px;
+            color: var(--input-text);
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--primary-purple);
+            background: transparent;
+            color: var(--primary-purple);
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        button:hover { background: var(--primary-purple); color: white; }
+
+        .footer-actions {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--input-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .save-btn { background: var(--primary-purple); color: white; border: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo"><strong>⊚ BLOGSQUAD</strong></div>
+    <div class="nav-links">
+        <a href="homepage.html">Home</a>
+        <a href="traveltips.html">Travel Tips</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</div>
+
+<div class="content">
+    <h1>Settings</h1>
+    <p class="subtitle">Manage your account preferences and configuration.</p>
+
+    <div class="tab-menu">
+        <div class="tab-item active" onclick="openTab(event, 'profile')">👤 Profile</div>
+        <div class="tab-item" onclick="openTab(event, 'notifications')">🔔 Notifications</div>
+        <div class="tab-item" onclick="openTab(event, 'appearance')">🎨 Appearance</div>
+        <div class="tab-item" onclick="openTab(event, 'privacy')">🛡️ Privacy</div>
+        <div class="tab-item" onclick="openTab(event, 'account')">🌐 Account</div>
+    </div>
+
+    <!-- PROFILE TAB -->
+    <div id="profile" class="settings-card active">
+        <h3>Profile Information</h3>
+        <div class="profile-header">
+            <img src="img/usl-default-avatar.png" class="avatar" alt="Avatar" id="profilePic" onclick="triggerFileInput()">
+            <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="previewImage(event)">
+            <div>
+                <a href="#" onclick="triggerFileInput()" style="color:var(--primary-purple); text-decoration:none; font-size:14px;">Change Avatar</a>
+                <p style="font-size:12px; color:var(--text-gray); margin: 5px 0;">JPG, PNG. Max 2MB.</p>
+            </div>
+        </div>
+
+        <div class="grid-inputs">
+            <div class="input-box"><label>Display Name</label><input type="text" id="nameInput"></div>
+            <div class="input-box"><label>Email</label><input type="email" id="emailInput"></div>
+            <div class="input-box"><label>Location</label><input type="text" id="locInput"></div>
+            <div class="input-box"><label>Website</label><input type="text" id="webInput"></div>
+        </div>
+        <div class="input-box">
+            <label>Bio</label>
+            <textarea id="bioInput" rows="3"></textarea>
+        </div>
+    </div>
+
+    <!-- NOTIFICATIONS TAB -->
+    <div id="notifications" class="settings-card">
+        <h3>Notifications</h3>
+        <p>Manage your email alerts here.</p>
+        <button onclick="updatePref('notifications', 'enabled')">Enable Notifications</button>
+        <button onclick="updatePref('notifications', 'disabled')">Disable Notifications</button>
+        <button onclick="alert('Test notification sent!')">Send Test Alert</button>
+    </div>
+
+    <!-- APPEARANCE TAB -->
+    <div id="appearance" class="settings-card">
+        <h3>Appearance</h3>
+        <p>Switch between Light and Dark mode.</p>
+        <button onclick="setTheme('Light')">☀️ Light Mode</button>
+        <button onclick="setTheme('Dark')">🌙 Dark Mode</button>
+    </div>
+
+    <!-- PRIVACY TAB -->
+    <div id="privacy" class="settings-card">
+        <h3>Privacy</h3>
+        <p>Control who sees your profile.</p>
+        <button onclick="updatePref('privacy', 'Public')">Public</button>
+        <button onclick="updatePref('privacy', 'Friends')">Friends Only</button>
+        <button onclick="updatePref('privacy', 'Private')">Private</button>
+    </div>
+
+    <!-- ACCOUNT TAB -->
+    <div id="account" class="settings-card">
+        <h3>Account</h3>
+        <p>Manage subscription and security.</p>
+        <button onclick="alert('Redirecting...')">Change Password</button>
+        <button onclick="alert('Opening billing...')">Subscription</button>
+        <button onclick="logoutAccount()" style="border-color: #ef4444; color: #ef4444;">Logout</button>
+    </div>
+
+    <div class="footer-actions">
+        <span class="auto-save">Ready to save?</span>
+        <button class="save-btn" onclick="saveData()">💾 Save Changes</button>
+    </div>
+</div>
+
+<script>
+    // --- 1. Tab Logic ---
+    function openTab(evt, tabName) {
+        let contents = document.getElementsByClassName("settings-card");
+        for (let content of contents) content.classList.remove("active");
+
+        let tabs = document.getElementsByClassName("tab-item");
+        for (let tab of tabs) tab.classList.remove("active");
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    // --- 2. Avatar Logic ---
+    function triggerFileInput() { document.getElementById('fileInput').click(); }
+
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            document.getElementById('profilePic').src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+    // --- 3. Theme Logic ---
+    function setTheme(mode) {
+        localStorage.setItem("theme", mode);
+        applyTheme();
+    }
+
+    function applyTheme() {
+        const theme = localStorage.getItem("theme") || "Light";
+        if(theme === "Dark") {
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("dark-mode");
+        }
+    }
+
+    // --- 4. Data Management ---
+    function updatePref(key, value) {
+        let data = JSON.parse(localStorage.getItem("userPreferences")) || {};
+        data[key] = value;
+        localStorage.setItem("userPreferences", JSON.stringify(data));
+        alert(`${key.charAt(0).toUpperCase() + key.slice(1)} set to ${value}`);
+    }
+
+    function saveData() {
+        const data = {
+            name: document.getElementById('nameInput').value,
+            email: document.getElementById('emailInput').value,
+            location: document.getElementById('locInput').value,
+            website: document.getElementById('webInput').value,
+            bio: document.getElementById('bioInput').value,
+            avatar: document.getElementById('profilePic').src,
+            theme: localStorage.getItem("theme") || "Light",
+            privacy: JSON.parse(localStorage.getItem("userPreferences"))?.privacy || "Public",
+            notifications: JSON.parse(localStorage.getItem("userPreferences"))?.notifications || "enabled"
+        };
+
+        localStorage.setItem("userPreferences", JSON.stringify(data));
+        alert("Settings saved successfully!");
+        // Optional: window.location.href = "profile.html";
+    }
+
+    function loadData() {
+        applyTheme();
+        const savedData = JSON.parse(localStorage.getItem("userPreferences"));
+        if (savedData) {
+            document.getElementById('nameInput').value = savedData.name || "";
+            document.getElementById('emailInput').value = savedData.email || "";
+            document.getElementById('locInput').value = savedData.location || "";
+            document.getElementById('webInput').value = savedData.website || "";
+            document.getElementById('bioInput').value = savedData.bio || "";
+            if(savedData.avatar) document.getElementById('profilePic').src = savedData.avatar;
+        }
+    }
+
+    function logoutAccount(){
+        if(confirm("Are you sure you want to logout?")) {
+            window.location.href = "index.html";
+        }
+    }
+
+    // Initialize on load
+    window.onload = loadData;
+</script>
+
+</body>
+</html>

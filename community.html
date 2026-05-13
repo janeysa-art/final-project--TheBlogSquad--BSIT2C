@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlogSquad Travel Blog</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#07052f;
+    color:white;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(90deg,#6c63ff,#627bff);
+    padding:18px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:35px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    padding:8px 14px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    background:rgba(255,255,255,0.15);
+    box-shadow:0 0 15px rgba(255,255,255,0.3);
+}
+
+/* MAIN */
+.container{
+    width:85%;
+    margin:auto;
+    padding:50px 0;
+}
+
+/* FEATURED */
+.featured{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:30px;
+    align-items:center;
+    margin-bottom:60px;
+}
+
+.featured-image{
+    overflow:hidden;
+    border-radius:35px;
+    border:8px solid rgba(108,99,255,0.25);
+}
+
+.featured-image img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+.featured-image:hover img{
+    transform:scale(1.08);
+}
+
+.tag{
+    display:inline-block;
+    background:#25257c;
+    padding:8px 16px;
+    border-radius:12px;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.featured-text h1{
+    font-size:36px;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.featured-text p{
+    color:#b7b7d6;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 22px;
+    background:#6c63ff;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#7d75ff;
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(108,99,255,0.4);
+}
+
+/* BLOG GRID */
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card-link{
+    text-decoration:none;
+    color:white;
+}
+
+.card{
+    background:#101047;
+    padding:15px;
+    border-radius:28px;
+    overflow:hidden;
+    transition:0.35s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 25px rgba(108,99,255,0.25);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:22px;
+    transition:0.4s;
+}
+
+.card:hover img{
+    transform:scale(1.07);
+}
+
+.card h3{
+    margin:15px 0 10px;
+    font-size:20px;
+}
+
+.card p{
+    color:#b7b7d6;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+    color:#9999c5;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .featured{
+        grid-template-columns:1fr;
+    }
+
+    .blog-grid{
+        grid-template-columns:1fr;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">BLOGSQUAD</div>
+    <ul>
+       
+       </li><li><a href="homepage.html">Home</a></li>
+        <li><a href="traveltips.html">Travel Tips</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- FEATURED SECTION -->
+    <section class="featured">
+        <div class="featured-image">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Scenic beach with turquoise water and palm trees">
+        </div>
+
+        <div class="featured-text">
+            <span class="tag">Travel</span>
+            <h1>Explore Hidden Paradise Beaches Around The World</h1>
+            <p>
+                Discover amazing travel destinations, hidden beaches,
+                and unforgettable adventures with BlogSquad.
+            </p>
+          
+             <a href="https://probetheglobe.com/secluded-international-beach-destinations-that-feel-completely-untouched/" class="btn nav-item">Explore Trail</a> 
+
+        </div>
+    </section>
+
+    <!-- BLOG CARDS -->
+    <section class="blog-grid">
+
+        <a href="hiking.html" class="card-link">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Scenic hiking trail in the mountains">
+                <span class="tag">Adventure</span>
+                <h3>Best Hiking Trails In Asia</h3>
+                <p>Discover scenic mountain trails and nature escapes.</p>
+            </div>
+        </a>
+
+        <!-- Cities -->
+        <a href="https://www.bestproducts.com/lifestyle/g2925/travel-bucket-list/?utm_source=bing&utm_medium=cpc&utm_campaign=mgu_bg_bp_d_bm_prog_us_g2925&msclkid=3fa47fd4eb0d1af19a70162d43c64414" class="nav-item card-link">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828" alt="Busy city street with tall buildings">
+        
+        <span class="tag">City</span>
+        
+        <h3>Top 20 Cities To Visit In 2026</h3>
+        
+        <p>Explore vibrant cities and iconic travel destinations.</p>
+    </div>
+</a>
+
+
+<!--food>-->
+       <a href="https://www.tasteatlas.com/best-rated-street-foods-in-the-world" class="nav-item card-link">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60" alt="Colorful street food market with various dishes">
+        
+        <span class="tag">Food</span>
+        
+        <h3>Street Food Adventures</h3>
+        
+        <p>Taste hidden gems from famous food destinations.</p>
+    </div>
+</a>
+
+    </section>
+</div>
+
+<footer>
+    © 2026 BlogSquad Travel Blog
+</footer>
+
+</body>
+</html>

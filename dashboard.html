@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogsquad</title>
+
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="css/dashboard.css">
+<script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<section id="sidebar">
+    <a href="#" class="brand">
+        <i class='bx bxs-smile'></i>
+        <span class="text">Blogsquad</span>
+    </a>
+
+    <ul class="side-menu top">
+        <li class="active"><a href="#"><i class='bx bxs-dashboard'></i><span class="text">Dashboard</span></a></li>
+        <li><a href="homepage.html"><i class='bx bx-home-alt'></i><span class="text">Home</span></a></li>
+        <li><a href="profile.html"><i class='bx bxs-doughnut-chart'></i><span class="text">Info</span></a></li>
+       
+    </ul>
+
+    <ul class="side-menu">
+        <li><a href="settings.html"><i class='bx bxs-cog'></i><span class="text">Settings</span></a></li>
+        <li><a href="index.html" class="logout"><i class='bx bxs-log-out-circle'></i><span class="text">Logout</span></a></li>
+    </ul>
+</section>
+
+<!-- CONTENT -->
+<section id="content">
+
+<!-- NAV -->
+<nav>
+    <i class='bx bx-menu'></i>
+
+    <a href="#" class="nav-link">Categories</a>
+
+    <form>
+        <div class="form-input">
+            <input type="search" placeholder="Search...">
+        </button><i class='bx bx-search'></i></button>
+        </div>
+    </form>
+
+    <!-- DARK MODE -->
+    <input type="checkbox" id="switch-mode" hidden>
+    <label for="switch-mode" class="switch-mode"></label>
+
+    <!-- NOTIFICATION -->
+    <div class="notification">
+        <i class='bx bxs-bell'></i>
+        <span class="num">0</span>
+        <ul id="notification-list" class="notification-dropdown"></ul>
+    </div>
+
+    <div class="profile">
+        <img src="img/usl.jpg" alt="profile">
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+<div class="head-title">
+    <div class="left">
+        <h1>Dashboard</h1>
+    </div>
+</div>
+
+<!-- BOX INFO -->
+<!-- BOX INFO -->
+<ul class="box-info">
+    <li>
+        <i class='bx bxs-map-alt'></i>
+        <span>
+            <h3 id="quest-count">0</h3>
+            <p>Quests Finished</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-group'></i>
+        <span>
+            <h3 id="travelers-count">0</h3>
+            <p>Travelers Met</p>
+        </span>
+    </li>
+    <li>
+        <i class='bx bxs-book-content'></i>
+        <span>
+            <h3 id="adventures-count">0</h3>
+            <p>Adventures Recorded</p>
+        </span>
+    </li>
+</ul>
+
+<!-- ================= TOP SECTION (TRAVELER + BUCKET LIST) ================= -->
+<div class="top-grid">
+
+    <!-- ================= TRAVELER LOG ================= -->
+    <div class="card">
+        <h2>🧑‍🤝‍🧑 Log a Fellow Traveler</h2>
+
+        <div class="row">
+            <input type="text" id="traveler-name" placeholder="Traveler Name...">
+            <button id="save-traveler">Add</button>
+        </div>
+
+        <ul id="traveler-list"></ul>
+    </div>
+
+    <!-- ================= BUCKET LIST ================= -->
+    <div class="card">
+        <h2>🧳 Bucket List</h2>
+
+        <div class="row">
+            <input type="text" id="bucket-input" placeholder="Add your goal...">
+            <button onclick="addBucketItem()">Add</button>
+        </div>
+
+        <ul id="bucket-list"></ul>
+    </div>
+
+</div>
+
+<!-- ================= DIARY SECTION (BELOW) ================= -->
+<div class="card diary-card">
+
+    <h2>📖 Adventure Log Entry</h2>
+
+    <input type="text" id="diary-title"
+           placeholder="Entry Title: e.g., Exploring the Forgotten Ruins...">
+
+    <textarea id="diary-body"
+              placeholder="Start writing your adventure here, traveler..."></textarea>
+
+    <button id="save-diary">Seal Entry (Save)</button>
+
+    <p id="writing-status"></p>
+
+    <!-- SAVED DIARIES APPEAR HERE -->
+    <div id="diary-list"></div>
+
+</div>
+
+
+
+
+
+</body>
+</html>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+           <tbody>
+    <tr class="table-row">
+        <td class="user-cell">
+            <div class="user-info">
+                <img src="img/usl.jpg" alt="Anna Smith">
+                <div>
+                    <p class="name">Anna Smith</p>
+                    <small class="role">Adventure Writer</small>
+                </div>
+            </div>
+        </td>
+
+        <td class="date-cell">
+            📅 01-10-2021
+        </td>
+
+        <td>
+            <span class="status completed">✔ Completed</span>
+        </td>
+    </tr>
+</tbody>
+<!-- Add this to index.html, profile.html, and dashboard.html -->
+<script>
+    function applyGlobalSettings() {
+        const prefs = JSON.parse(localStorage.getItem("userPreferences"));
+        if (prefs) {
+            // Apply Theme to Body
+            if (prefs.theme === "Dark") {
+                document.body.classList.add("dark-mode");
+            }
+
+            // Apply Font Size
+            document.body.style.fontSize = prefs.fontSize + "px";
+
+            // Update Name globally (target the class or ID used in your headers)
+            const globalName = document.querySelector(".sub-menu h6") || document.getElementById("userName");
+            if (globalName) globalName.innerText = prefs.name;
+            
+            // Update Profile Pics
+            const profilePics = document.querySelectorAll(".user-pic, .img__container img");
+            profilePics.forEach(img => img.src = prefs.avatar);
+        }
+    }
+    // Run immediately
+    applyGlobalSettings();
+
+    function updateGlobalPostCount() {
+    // Count posts currently on the feed
+    const count = document.querySelectorAll(".post").length;
+    
+    // Save to LocalStorage so the Dashboard can see it
+    localStorage.setItem("postCount", count);
+}
+
+// INSIDE your createNewPost() function:
+// ... after feed.prepend(newPost); ...
+updateGlobalPostCount();
+
+// INSIDE your delete-btn logic:
+// ... after newPost.remove(); ...
+updateGlobalPostCount();
+// Add this inside your save-diary onclick function:
+window.refreshAdventureStats();
+    
+</script>
+</body>
+</html>
