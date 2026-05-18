@@ -5,20 +5,20 @@ const CommentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
   post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'TravelBlog',
     required: true
   },
+
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   }
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);
